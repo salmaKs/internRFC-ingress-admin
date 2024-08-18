@@ -1,0 +1,87 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: internrfc.com
+    http:
+      paths:
+      - path: /admin/travail(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: work-admin-service
+            port:
+              number: 80
+      
+      - path: /admin/intern(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 80
+      - path: /admin/supervisor(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 80
+      
+
+      - path: /admin/calendrier(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: calendar-admin-service
+            port:
+              number: 80
+       - path: /calendar(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: calendar-admin-service
+            port:
+              number: 80
+
+      - path: /admin/projet(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: project-admin-service
+            port:
+              number: 80
+      - path: /projetApplication(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: project-admin-service
+            port:
+              number: 80
+      - path: /projetDetails(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: project-admin-service
+            port:
+              number: 80
+      - path: /NewProjet(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: project-admin-service
+            port:
+              number: 80
+       - path: /projetModification(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: project-admin-service
+            port:
+              number: 80
+    
