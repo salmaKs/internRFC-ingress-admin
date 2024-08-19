@@ -10,6 +10,13 @@ spec:
   - host: internrfc.com
     http:
       paths:
+      - path: /admin/(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 80
       - path: /admin/travail(/|$)(.*)
         pathType: Prefix
         backend:
